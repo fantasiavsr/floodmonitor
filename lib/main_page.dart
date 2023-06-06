@@ -129,14 +129,24 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         // if else distance1 , distance 2, water level
-        if (distance1 > 25 || distance2 < 7.5) {
-          warningMeter = 2;
-        } else if (distance1 > 20 || distance2 < 10) {
-          warningMeter = 3;
-        } else if (distance1 > 15 || distance2 < 12.5) {
-          warningMeter = 4;
-        } else {
+        if (waterLevel < 6 && distance1 > 75 && distance2 < 15) {
+          warningMeter = 0;
+        } else if (waterLevel < 6 && distance1 < 50 && distance2 > 15) {
           warningMeter = 1;
+        } else if (waterLevel < 6 && distance1 < 25 && distance2 > 20) {
+          warningMeter = 2;
+        } else if (waterLevel > 6 && distance1 < 25 && distance2 > 20) {
+          warningMeter = 3;
+        } else if (waterLevel > 20 && distance1 < 25 && distance2 > 20) {
+          warningMeter = 4;
+        } else if (waterLevel > 6) {
+          warningMeter = 3;
+        } else if (distance1 < 25) {
+          warningMeter = 3;
+        } else if (distance2 > 20) {
+          warningMeter = 3;
+        } else {
+          warningMeter = 0;
         }
       });
     });
