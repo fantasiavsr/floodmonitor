@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1037597628496",
+    "firebase_url": "https://eisp8266-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "eisp8266",
+    "storage_bucket": "eisp8266.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037597628496:android:55ebfa0f527ad256b9d955",
+        "android_client_info": {
+          "package_name": "com.example.floodmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037597628496-dksnja05slba65lv8gf6tuhkmo33e7ph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYAoJESLfFo5XyFRkf0f6odFFqeEOkh5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037597628496-c2oo6hledvk3qmroktj8c0777jhadpl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
