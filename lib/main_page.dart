@@ -84,11 +84,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         //convert value to round
         //distance2 = double.parse(distance2.toStringAsFixed(2));
 
-        if (distance2 <= 30) {
-          distance2 = 30 - distance2;
+        if (distance2 <= 15) {
+          distance2 = 15 - distance2;
         }
 
-        if (distance2 > 30) {
+        if (distance2 > 15) {
           distance2forgraph = 0;
         } else if (distance2 < 0) {
           distance2forgraph = 0;
@@ -102,26 +102,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     _databaseReference.child('water_level').onValue.listen((event) {
       setState(() {
         waterLevel = double.tryParse(event.snapshot.value.toString()) ?? 0.0;
-
-        if (waterLevel < 6 && distance1 > 75 && distance2 < 15) {
-          warningMeter = 0;
-        } else if (waterLevel < 6 && distance1 < 50 && distance2 > 15) {
-          warningMeter = 1;
-        } else if (waterLevel < 6 && distance1 < 25 && distance2 > 20) {
-          warningMeter = 2;
-        } else if (waterLevel > 6 && distance1 < 25 && distance2 > 20) {
-          warningMeter = 3;
-        } else if (waterLevel > 20 && distance1 < 25 && distance2 > 20) {
-          warningMeter = 4;
-        } else if (waterLevel > 6) {
-          warningMeter = 3;
-        } else if (distance1 < 25) {
-          warningMeter = 3;
-        } else if (distance2 > 20) {
-          warningMeter = 3;
-        } else {
-          warningMeter = 0;
-        }
       });
     });
 
@@ -129,22 +109,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         // if else distance1 , distance 2, water level
-        if (waterLevel < 6 && distance1 > 75 && distance2 < 15) {
-          warningMeter = 0;
-        } else if (waterLevel < 6 && distance1 < 50 && distance2 > 15) {
-          warningMeter = 1;
-        } else if (waterLevel < 6 && distance1 < 25 && distance2 > 20) {
-          warningMeter = 2;
-        } else if (waterLevel > 6 && distance1 < 25 && distance2 > 20) {
-          warningMeter = 3;
-        } else if (waterLevel > 20 && distance1 < 25 && distance2 > 20) {
+        if (waterLevel > 110) {
           warningMeter = 4;
-        } else if (waterLevel > 6) {
+        } else if (waterLevel > 100 && distance1 < 25 && distance2 > 10) {
+          warningMeter = 4;
+        } else if (waterLevel > 50) {
           warningMeter = 3;
-        } else if (distance1 < 25) {
+        } else if (distance1 < 25 || distance2 >= 10) {
           warningMeter = 3;
-        } else if (distance2 > 20) {
-          warningMeter = 3;
+        } else if (waterLevel <= 6 && distance1 < 35 && distance2 > 5) {
+          warningMeter = 2;
+        } else if (waterLevel <= 6 && distance1 < 50 && distance2 > 1) {
+          warningMeter = 1;
+        } else if (waterLevel < 6 && distance1 > 75 && distance2 > 1) {
+          warningMeter = 0;
         } else {
           warningMeter = 0;
         }
@@ -275,7 +253,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 Container(
                                   width: (MediaQuery.of(context).size.width -
                                           102) *
-                                      (distance2forgraph / 30),
+                                      (distance2forgraph / 15),
                                   color: Colors.blue,
                                 ),
                               ],
